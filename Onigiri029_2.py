@@ -1,16 +1,18 @@
+import random
+
 class OnigiriAI(object):
     # 評価表を設定(とりあえず6x6に対応)
     board_eval = [
-        [ 10,-10, -6, -6,-10, 10],
-        [-10, -6, -4, -4, -6,-10],
-        [ -6, -4,  0,  0, -4, -6],
-        [ -6, -4,  0,  0, -4, -6],
-        [-10, -6, -4, -4, -6,-10],
-        [ 10,-10, -6, -6,-10, 10],
+        [10, -10, -6, -6, -10, 10],
+        [-10, -6, -4, -4, -6, -10],
+        [-6, -4,  0,  0, -4, -6],
+        [-6, -4,  0,  0, -4, -6],
+        [-10, -6, -4, -4, -6, -10],
+        [10, -10, -6, -6, -10, 10],
     ]
 
     def name(self):
-        return 'Onigiri029 - ver2'
+        return 'おにぎりAI'
 
     # 自分が石を置ける場所を探索し、おきたい場所の座標を返す
     def play(self, board, color):
@@ -41,7 +43,5 @@ class OnigiriAI(object):
         for i in range(len(selection)):
             if pos_evals[i] == max(pos_evals):
                 final_selection.append(selection[i])
-
-
-        x, y = final_selection[random.randint(0, len(final_selection))]
+        x, y = final_selection[random.randrange(len(final_selection))]
         return x, y

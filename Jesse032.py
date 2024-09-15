@@ -2,7 +2,7 @@ import numpy as np
 
 class OnigiriAI(object):
     def name(self):
-        return 'Onigiri029'
+        return 'Jesse032'
 
     def play(self, board, color):
         # それぞれの値を格納するリストを用意

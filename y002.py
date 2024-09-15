@@ -1,21 +1,16 @@
-#評価表を作成し、ポイントが高いところに置く。
-#同じポイントの場合、序盤・中盤(空きマス11より多いとき)は相手の石を取る数を最も少ないところに置く(あまりとらない方がいいと聞いたので)。
-#終盤(空きマス11以下)は最もたくさん取れるところに置く。
-
-class yui026AI(object):
+class YunaAI(object):
     def name(self):
-        return 'yui026'
+        return 'y002'
 
     def play(self, board, color):
         import random
-        #評価表 四隅=5, 中央壁際=4, 中央=3, 角手前上下=2, 角手前斜め=1
         hyouka = [
-        [5, 2, 4, 4, 2, 5],
-        [2, 1, 3, 3, 1, 2],
-        [4, 3, 0, 0, 3, 4],
-        [4, 3, 0, 0, 3, 4],
-        [2, 1, 3, 3, 1, 2],
-        [5, 2, 4, 4, 2, 5],
+        [10, 4, 8, 8, 4, 10],
+        [4, 2, 6, 6, 2, 4],
+        [8, 6, 0, 0, 6, 8],
+        [8, 6, 0, 0, 6, 8],
+        [4, 2, 6, 6, 2, 4],
+        [10, 4, 8, 8, 4, 10],
         ]
         pos_list = []
         gain_list = []
@@ -28,7 +23,7 @@ class yui026AI(object):
             for i in range(0, board.N):
                 for j in range(0, board.N):
                   if board.put_and_reverse(i, j, color, reverse=False) > 0:
-                    pos_list.append(6*j+i) #6*j+i何マス目
+                    pos_list.append(6*j+i) 
                     gain_list.append(board.put_and_reverse(i, j, color, reverse=False))
                     point_list.append(hyouka[i][j])
                   if board.b[i][j] == 0:
